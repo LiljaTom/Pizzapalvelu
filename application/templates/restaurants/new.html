@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+<form method="POST" action="{{ url_for('restaurants_create') }}">
+    <table>
+        <tr>
+            <td>
+                {{ form.name.label }}
+            </td>
+            <td>
+                {{ form.name }}
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.name.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.address.label }}
+            </td>
+            <td>
+                {{ form.address }}
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.address.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.city.label }}
+            </td>
+            <td>
+                {{ form.city }}
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.city.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.postcode.label }}
+            </td>
+            <td>
+                {{ form.postcode }}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+            <input type="submit" value="Add a new restaurant"/>
+            </td>
+        </tr>
+</form>
+{% endblock %}
