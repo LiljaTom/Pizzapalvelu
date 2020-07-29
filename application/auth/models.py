@@ -2,7 +2,7 @@ from application import db
 
 class User(db.Model):
 
-    __tablename__ = "Customer"
+    __tablename__ = "account"
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(144), nullable=False)
@@ -11,6 +11,8 @@ class User(db.Model):
 
     address = db.Column(db.String(144), nullable=False)
     phonenumber = db.Column(db.String(144), nullable=False)
+
+    restaurants = db.relationship("Restaurant", backref="account", lazy=True) 
 
     def __init__(self, name, username, password):
         self.name = name

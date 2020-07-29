@@ -1,5 +1,6 @@
 from application import app, db
 from flask import render_template, request, redirect, url_for
+from flask_login import login_required, current_user
 
 from application.restaurants.models import Restaurant
 from application.restaurants.forms import RestaurantForm
@@ -19,6 +20,7 @@ def restaurants_create():
     r.address = form.address.data
     r.city = form.city.data
     r.postcode = form.postcode.data
+    r.account_id = current_user.id 
 
     db.session().add(r)
     db.session().commit()
